@@ -8,6 +8,11 @@ const app = e();
 
 app.use('/svg/', e.static(path.resolve('svg/')));
 
+app.get('/player/', (req, res, next) => {
+	res.send(generate(req.path.replace('/', '').replace('player/', '/')));
+	next();
+});
+
 app.get('/*', (req, res) => {
 	res.send(generate(req.path.replace('/', '')));
 });

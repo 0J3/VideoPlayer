@@ -19,7 +19,7 @@ var svgo_1 = require("svgo");
 var UUID_1 = require("./UUID");
 var url_1 = require("url");
 var path_1 = require("path");
-var debugMode = true;
+var debugMode = false;
 var svgDir = path_1.resolve('svg/');
 var minify = debugMode
     ? function (v) {

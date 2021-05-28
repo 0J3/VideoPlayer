@@ -6,7 +6,7 @@ import { gen } from './UUID';
 import { URL } from 'url';
 import { resolve } from 'path';
 
-const debugMode = true;
+const debugMode = false;
 
 const svgDir = resolve('svg/');
 

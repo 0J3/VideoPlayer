@@ -51,7 +51,7 @@ body {
 	fill: #fff;
 }
 #VAR_PlayId .svg-fill {
-	transition: d 1s;
+	transition: d 0.1s;
 }
 
 /* #playsvg {
