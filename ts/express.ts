@@ -12,23 +12,6 @@ app.get('/*', (req, res) => {
 
 	// console.log(browser);
 
-	if (
-		// prevent IE but allow Edge
-		(browser.family == 'IE' && Number(browser.major) < 12) ||
-		// prevent old chrome versions
-		((browser.family == 'Chrome' || browser.family == 'Chrome Mobile') &&
-			Number(browser.patch) &&
-			Number(browser.patch) < 4000) ||
-		// prevent old firefox versions
-		(browser.family == 'Firefox' &&
-			Number(browser.major) &&
-			Number(browser.major) < 78)
-	) {
-		return res.send(
-			'Unsupported or Outdated Browser. Try <a href="https://firefox.com">the latest Firefox</a>'
-		);
-	}
-
 	res.send(generate(req.path.replace('/', ''), browser.family == 'IE'));
 });
 
