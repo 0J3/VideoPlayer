@@ -68,9 +68,10 @@ const initControls = () => {
 	document['%progressId%'] = document.getElementById('%progressId%');
 	document['%PlayId%'] = document.getElementById('%PlayId%');
 	const updateSvg = () => {
-		document['playsvg'] =
-			document.getElementById('playsvg') ||
-			document['%PlayId%'].firstChild.firstChild;
+		document['playsvg'] = document.getElementById('playsvg');
+		if (document['playsvg'] == null) {
+			document['playsvg'] = document['%PlayId%'].firstChild.firstChild;
+		}
 		// if (!document['%playerVar%'].paused)
 		// 	document['%PlayId%'].innerHTML =
 		// 		document.getElementById('PauseSVG').innerHTML;
