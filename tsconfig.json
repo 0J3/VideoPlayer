@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"rootDir": "./ts",
+		"outDir": "./js",
+		"declaration": true,
+		"sourceMap": true,
+		"newLine": "lf",
+		"removeComments": true,
+		"target": "ES3",
+		"moduleResolution": "node"
+	}
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" playerID="#%playerid%" movedVar="%moved%">
+	<head>
+		<title>HTML5 Media Player</title>
+		<!-- META -->
+		<meta name="title" content="HTML5 Video Player" />
+		<meta name="description" content="Raw Video URL: %url%" />
+		<meta property="og:type" content="website" />
+		<meta name="theme-color" content="#FF0000" />
+		<meta property="og:url" content="https://media.nora.lgbt/plr/v2/%url%" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="og:site_name" content="0J3's HTML5 Video Player" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Styling -->
+		%style%
+	</head>
+	<body>
+		<noscript>Scripts must be enabled for this video player to work!</noscript>
+		<video
+			id="%playerid%"
+			class="J3Player_Video URL_%url% %playerid% URL_%url%"
+			loop=""
+			url="%url%"
+			onclick="document['%playFunc%']()"
+		>
+			<source src="%url%" id="%sourceElId%" />
+		</video>
+		<div id="%controlsid%">
+			<div id="%PlayId%" onclick="document['%playFunc%']()">%Play.svg%</div>
+			<input
+				type="range"
+				min="0"
+				max="1"
+				value="0"
+				step="0.001"
+				class="slider"
+				onmousedown="document['updateRange'] = false"
+				onmouseup="document['updateRange'] = true"
+				oninput="setProgressToRange()"
+				id="%progressId%"
+			/>
+		</div>
+		%script%
+	</body>
+</html>

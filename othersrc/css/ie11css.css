@@ -1,0 +1,43 @@
+/* IE11 specific css */
+body {
+	background: #000000;
+	position: fixed;
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+}
+#VAR_playerid {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	transition: all 1s;
+}
+#VAR_controlsid {
+	width: 100vw;
+	display: block;
+	top: 100vh;
+	left: 0;
+	transform: translate(0, -100%);
+	position: fixed;
+	height: 32px;
+	opacity: 0;
+	background: #000000;
+	transition: all 500ms;
+}
+#VAR_playerid:hover + #VAR_controlsid,
+#VAR_controlsid:hover {
+	opacity: 1;
+}
+
+.svg-fill {
+	fill: #fff;
+}
+
+#playsvg {
+	transform: translate(0, -5px);
+}
