@@ -1,3 +1,3 @@
 <svg height="85%" version="1.1" viewBox="0 0 36 36" width="100%" style="width:min-content;min-width:40px">
-  <path class="svg-fill" d="M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z" id="pause"></path>
+  <path class="svg-fill" d="M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z" id="playsvg"></path>
 </svg>
