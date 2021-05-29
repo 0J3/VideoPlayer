@@ -1,5 +1,7 @@
 var isDebug = '%isDebug%'.toString() == 'true';
-var start = performance.now();
+var start = typeof performance !== 'undefined' && typeof performance.now !== 'undefined'
+    ? performance.now()
+    : null;
 var initHover = function (moveTimeout) {
     document['%isHover%'] = function (e) { return e.parentElement.querySelector(':hover') === e; };
     document['%playerVar%'] = document.getElementById('%playerid%');
@@ -89,7 +91,9 @@ var initControls = function () {
 };
 initHover(2.5e3);
 initControls();
-if (isDebug) {
+if (isDebug &&
+    typeof performance !== 'undefined' &&
+    typeof performance.now !== 'undefined') {
     console.log('[' +
         new Date().toLocaleTimeString() +
         '] Ready! (Took ' +

@@ -19,7 +19,7 @@ var svgo_1 = require("svgo");
 var UUID_1 = require("./UUID");
 var url_1 = require("url");
 var path_1 = require("path");
-var debugMode = false;
+var debugMode = true;
 var svgDir = path_1.resolve('svg/');
 var minify = debugMode
     ? function (v) {
@@ -127,7 +127,7 @@ exports["default"] = (function (path, isIe) {
     var controlsid = exports.generateUnique('ControlsID');
     var url = exports.getUrl(path);
     var script = clientCode;
-    var sourceElId = exports.generateUnique('SourceEl');
+    var sourceElId = exports.generateUnique('sourceElId');
     var moved = exports.generateUnique('Moved');
     var hovering = exports.generateUnique('Hovering');
     var isHover = exports.generateUnique('IsHover');
@@ -138,6 +138,7 @@ exports["default"] = (function (path, isIe) {
     var mouseMoveFunc = exports.generateUnique('mouseMoveFunc');
     var PlayId = exports.generateUnique('PlayId');
     var progressId = exports.generateUnique('progressId');
+    var volumeId = exports.generateUnique('volumeId');
     var style = css;
     if (isIe) {
         style = ie11css;
@@ -156,6 +157,7 @@ exports["default"] = (function (path, isIe) {
         pauseFunc: pauseFunc,
         mouseMoveFunc: mouseMoveFunc,
         PlayId: PlayId,
-        progressId: progressId, isDebug: debugMode }, svgs)), minifyOptions);
+        progressId: progressId,
+        volumeId: volumeId, isDebug: debugMode }, svgs)), minifyOptions);
 });
 //# sourceMappingURL=getHtml.js.map

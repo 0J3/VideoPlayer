@@ -6,7 +6,7 @@ import { gen } from './UUID';
 import { URL } from 'url';
 import { resolve } from 'path';
 
-const debugMode = false;
+const debugMode = true;
 
 const svgDir = resolve('svg/');
 
@@ -124,7 +124,7 @@ export default (path: string = '', isIe: boolean = false) => {
 	const url = getUrl(path);
 	const script = clientCode;
 
-	const sourceElId = generateUnique('SourceEl');
+	const sourceElId = generateUnique('sourceElId');
 	const moved = generateUnique('Moved');
 	const hovering = generateUnique('Hovering');
 	const isHover = generateUnique('IsHover');
@@ -135,6 +135,7 @@ export default (path: string = '', isIe: boolean = false) => {
 	const mouseMoveFunc = generateUnique('mouseMoveFunc');
 	const PlayId = generateUnique('PlayId');
 	const progressId = generateUnique('progressId');
+	const volumeId = generateUnique('volumeId');
 
 	let style = css;
 
@@ -160,6 +161,7 @@ export default (path: string = '', isIe: boolean = false) => {
 			mouseMoveFunc,
 			PlayId,
 			progressId,
+			volumeId,
 			isDebug: debugMode,
 			...svgs,
 		}),

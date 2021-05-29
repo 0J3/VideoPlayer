@@ -1,6 +1,9 @@
 const isDebug = '%isDebug%'.toString() == 'true';
 
-const start = performance.now();
+const start =
+	typeof performance !== 'undefined' && typeof performance.now !== 'undefined'
+		? performance.now()
+		: null;
 
 const initHover = moveTimeout => {
 	document['%isHover%'] = (e: {
@@ -111,7 +114,11 @@ const initControls = () => {
 initHover(2.5e3);
 initControls();
 
-if (isDebug) {
+if (
+	isDebug &&
+	typeof performance !== 'undefined' &&
+	typeof performance.now !== 'undefined'
+) {
 	console.log(
 		'[' +
 			new Date().toLocaleTimeString() +
