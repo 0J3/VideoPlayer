@@ -66,7 +66,7 @@ export const generateWithArgs = (args: { [x: string]: any }) => {
 	return html;
 };
 export const getUrl = (
-	path: string = 'https://0j3.github.io/random/hri.mp4'
+	path: string = 'https://github.com/0J3/random/raw/main/hri.mp4'
 ) => {
 	// if (path == '' || !path) {
 	// 	path = document.location.hash.replace('#', '');
@@ -77,7 +77,7 @@ export const getUrl = (
 	} else if (path.startsWith('/')) {
 		path = new URL(path.replace('/', ''), base).toString();
 	} else if (path == '' || !path) {
-		path = 'https://0j3.github.io/random/hri.mp4';
+		path = 'https://github.com/0J3/random/raw/main/hri.mp4';
 	}
 
 	if (!path.startsWith('https')) {
