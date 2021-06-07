@@ -47,7 +47,7 @@ const minifysvg = (s: string) => {
 
 const template = fs.readFileSync('./othersrc/template.html').toString();
 
-const base = 'https://0j3.github.io/random/';
+const base = 'https://github.com/0J3/random/raw/main/';
 
 const uids = [];
 
