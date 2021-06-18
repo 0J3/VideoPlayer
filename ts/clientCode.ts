@@ -5,7 +5,7 @@ const start =
 		? performance.now()
 		: null;
 
-const initHover = moveTimeout => {
+const initHover = (moveTimeout: number) => {
 	document['%isHover%'] = (e: {
 		parentElement: { querySelector: (arg0: string) => any };
 	}) => e.parentElement.querySelector(':hover') === e;

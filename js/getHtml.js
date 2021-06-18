@@ -54,7 +54,7 @@ var minifysvg = function (s) {
         }).data;
 };
 var template = fs.readFileSync('./othersrc/template.html').toString();
-var base = 'https://0j3.github.io/random/';
+var base = 'https://github.com/0J3/random/raw/main/';
 var uids = [];
 var generateWithArgs = function (args) {
     var html = template;
@@ -72,7 +72,7 @@ var generateWithArgs = function (args) {
 };
 exports.generateWithArgs = generateWithArgs;
 var getUrl = function (path) {
-    if (path === void 0) { path = 'https://0j3.github.io/random/hri.mp4'; }
+    if (path === void 0) { path = 'https://github.com/0J3/random/raw/main/hri.mp4'; }
     if (path.startsWith('//')) {
         path = path.replace('//', 'https://');
     }
@@ -80,7 +80,7 @@ var getUrl = function (path) {
         path = new url_1.URL(path.replace('/', ''), base).toString();
     }
     else if (path == '' || !path) {
-        path = 'https://0j3.github.io/random/hri.mp4';
+        path = 'https://github.com/0J3/random/raw/main/hri.mp4';
     }
     if (!path.startsWith('https')) {
         if (path.startsWith('http://')) {
