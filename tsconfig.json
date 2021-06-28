@@ -25,11 +25,11 @@
     // !SETTINGS
 
     // SETTINGS Strict
-    "strict": true,                           // SETTING Enable all strict type checking options - Recommended value: true
-    "strictBindCallApply": true,              // SETTING Check that bind/call/apply methods match the original function - Recommended value: true
-    "strictFunctionTypes": true,              // SETTING When assigning functions, check to ensure parameters and the return values are subtype-compatible. - Recommended value: true
-    "strictPropertyInitialization": true,     // SETTING Check for proprieties that are declared but not defined in the constructor - Recommended value: true
-    "strictNullChecks": true,                 // SETTING When type checking, take `null`/`undefined` into account
+    "strict": false,                          // SETTING Enable all strict type checking options - Recommended value: true
+    "strictBindCallApply": false,             // SETTING Check that bind/call/apply methods match the original function - Recommended value: true
+    "strictFunctionTypes": false,             // SETTING When assigning functions, check to ensure parameters and the return values are subtype-compatible. - Recommended value: true
+    "strictPropertyInitialization": false,    // SETTING Check for proprieties that are declared but not defined in the constructor - Recommended value: true
+    "strictNullChecks": false,                // SETTING When type checking, take `null`/`undefined` into account
     "alwaysStrict": true,                     // SETTING Always add "use strict" to files
     // !SETTINGS
 
