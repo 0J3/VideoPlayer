@@ -61,30 +61,33 @@
 			<!-- <source src="%url%" id="%sourceElId%" /> -->
 			<source id="%sourceElId%" />
 		</video>
-		<div id="%controlsid%">
-			<div id="%PlayId%" onclick="document['%playFunc%']()">%Play.svg%</div>
-			<input
-				type="range"
-				min="0"
-				max="1"
-				value="0"
-				step="0.001"
-				class="slider"
-				onmousedown="document['updateRange'] = false"
-				onmouseup="document['updateRange'] = true"
-				oninput="setProgressToRange()"
-				id="%progressId%"
-			/>
-			<input
-				type="range"
-				min="0"
-				max="2"
-				value="1"
-				step="0.001"
-				class="slider"
-				oninput="document.updateVolume()"
-				id="%volumeId%"
-			/>
+		<div class="controlsContainer">
+			<div id="%controlsid%">
+				<div id="%PlayId%" onclick="document['%playFunc%']()">%Play.svg%</div>
+				<input
+					type="range"
+					min="0"
+					max="1"
+					value="0"
+					step="0.001"
+					class="slider"
+					onmousedown="document['updateRange'] = false"
+					onmouseup="document['updateRange'] = true"
+					oninput="setProgressToRange()"
+					id="%progressId%"
+				/>
+				<span class="time" id="time">42:00 / 69:00</span>
+				<input
+					type="range"
+					min="0"
+					max="2"
+					value="1"
+					step="0.001"
+					class="slider"
+					oninput="document.updateVolume()"
+					id="%volumeId%"
+				/>
+			</div>
 		</div>
 		%script%
 	</body>

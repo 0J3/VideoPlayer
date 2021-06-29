@@ -190,6 +190,32 @@ class Keymap {
 	}
 }
 
+// SECTION Time Display
+document.addEventListener('DOMContentLoaded', () => {
+	// ANCHOR Time Element
+	const time = document.getElementById('time');
+	const player = document['%playerVar%'];
+	// ANCHOR format
+	const format = (time: number) => {
+		const x = (a: number | string) => {
+			a = a.toString();
+			if (a.length === 1) return `0${a}`;
+			else return a;
+		};
+		time = Math.floor(time);
+		return x((time - (time % 60)) / 60) + ':' + x(time - (time - (time % 60)));
+	};
+	// ANCHOR interval
+	const setText = (s: string) => {
+		if (time.innerText !== s) time.innerText = s;
+	};
+	// inefficient asf but idc
+	setInterval(() => {
+		setText(format(player['currentTime']) + ' / ' + format(player['duration']));
+	}, 1000);
+});
+// !SECTION
+
 // SECTION Keybinds
 (() => {
 	// ANCHOR Create Keymap
