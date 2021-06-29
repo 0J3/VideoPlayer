@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.getItem('Volume-%url%') || localStorage.getItem('Volume');
 	let vol: number = Number(typeof lsVol === 'undefined' ? 1 : lsVol);
 	const setPlayerVol = () => {
+		console.log(vol);
+
 		document['%playerVar%'].volume = vol / maxVol;
 	};
 	const setVolume = (volume: number) => {
