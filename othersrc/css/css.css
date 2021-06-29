@@ -78,20 +78,28 @@ body {
 /* Slider CSS */
 .slider {
 	-webkit-appearance: none;
-	height: 15px;
-	border-radius: 5px;
+	height: 6px;
+	border-radius: 0;
 	background: #d3d3d3;
 	outline: none;
 	opacity: 0.7;
 	-webkit-transition: 0.2s;
 	transition: opacity 0.2s;
+	left: 0;
+	margin: 0 0;
+	transition: height 0.5s;
+}
+.slider:not(#VAR_volumeId):hover {
+	height: 8px;
+}
+.slider:not(#VAR_volumeId):active {
+	height: 12px;
 }
 #VAR_progressId {
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -60%);
-	width: 70%;
+	transform: translate(-50%, -100%);
+	width: 100%;
 }
 #VAR_volumeId {
 	position: absolute;
@@ -112,20 +120,29 @@ body {
 	opacity: 1;
 }
 
+.slider {
+	--size: 15px;
+	--border: 50%;
+	--bg: #04aa6d;
+	--cursor: pointer;
+}
+
 .slider::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	appearance: none;
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: #04aa6d;
-	cursor: pointer;
+	width: var(--size);
+	height: var(--size);
+	border-radius: var(--border);
+	background: var(--bg);
+	cursor: var(--cursor);
+	border: none;
 }
 
 .slider::-moz-range-thumb {
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: #04aa6d;
-	cursor: pointer;
+	width: var(--size);
+	height: var(--size);
+	border-radius: var(--border);
+	background: var(--bg);
+	cursor: var(--cursor);
+	border: none;
 }

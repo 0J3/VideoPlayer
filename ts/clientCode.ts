@@ -5,6 +5,7 @@ const start =
 		? performance.now()
 		: null;
 
+// ANCHOR Initialise hover
 const initHover = (moveTimeout: number) => {
 	document['%isHover%'] = (e: {
 		parentElement: { querySelector: (arg0: string) => any };
@@ -67,6 +68,42 @@ document['setProgressToRange'] = () => {
 
 	document['%playerVar%'].currentTime = time * dur;
 };
+
+// ANCHOR Volume
+let volItem: HTMLElement;
+document.addEventListener('DOMContentLoaded', () => {
+	const maxVol = 2;
+	volItem = document.getElementById('%volumeId%');
+	const lsVol =
+		localStorage.getItem('Volume-%url%') || localStorage.getItem('Volume');
+	let vol: number = Number(typeof lsVol === 'undefined' ? 1 : lsVol);
+	const setPlayerVol = () => {
+		document['%playerVar%'].volume = vol / maxVol;
+	};
+	const setVolume = (volume: number) => {
+		if (volume > 2)
+			throw new Error('Volume ' + vol + ' is > max volume of ' + maxVol);
+		if (volume < 0) throw new Error('Volume ' + vol + ' is < min volume of 0');
+		localStorage.setItem('Volume', volume.toString());
+		localStorage.setItem('Volume-%url%', volume.toString());
+		vol = volume;
+		setPlayerVol();
+	};
+	document['changeVolume'] = (volume: number) => {
+		const target = Math.min(Math.max(vol + volume, 0), 2);
+
+		setVolume(target);
+		volItem['value'] = vol;
+	};
+	document['updateVolume'] = () => {
+		const val = volItem['value'];
+		setVolume(val);
+	};
+	volItem['value'] = vol;
+	setPlayerVol();
+});
+
+// ANCHOR Initialise controls
 const initControls = () => {
 	document['%progressId%'] = document.getElementById('%progressId%');
 	document['%PlayId%'] = document.getElementById('%PlayId%');
@@ -106,6 +143,8 @@ const initControls = () => {
 		else pause();
 		updateSvg();
 	};
+	document['play'] = play;
+	document['pause'] = pause;
 
 	play();
 	updateSvg();
@@ -114,6 +153,69 @@ const initControls = () => {
 initHover(2.5e3);
 initControls();
 
+// FUNCTION Seek
+const seek = (time: number) => (document['%playerVar%'].currentTime += time);
+
+// CLASS Keybind
+class Keybind {
+	key: string;
+	callback: () => any;
+	constructor(key: string, callback: () => any) {
+		this.key = key.toLowerCase();
+		this.callback = callback;
+	}
+}
+// CLASS Keymap
+class Keymap {
+	/**
+	 * @internal
+	 * @private
+	 */
+	_keymap: Keybind[] = [];
+	set(keyBind: Keybind) {
+		this._keymap.push(keyBind);
+	}
+	get(keyName: string) {
+		keyName = keyName.toLowerCase();
+		for (const i in this._keymap) {
+			if (Object.prototype.hasOwnProperty.call(this._keymap, i)) {
+				const keybind = this._keymap[i];
+				if (keybind.key === keyName) {
+					return keybind;
+				}
+			}
+		}
+		// if (isDebug) console.warn('KEYBIND DOES NOT EXIST');
+		return 'KeybindDoesNotExist';
+	}
+}
+
+// SECTION Keybinds
+(() => {
+	// ANCHOR Create Keymap
+	const keymap = new Keymap();
+	document['keyMap'] = keymap;
+
+	// ANCHOR Keybindings
+	keymap.set(new Keybind('ArrowUp', () => document['changeVolume'](0.1)));
+	keymap.set(new Keybind('ArrowDown', () => document['changeVolume'](-0.1)));
+
+	keymap.set(new Keybind('ArrowLeft', () => seek(-5)));
+	keymap.set(new Keybind('ArrowRight', () => seek(5)));
+	keymap.set(new Keybind(' ', document['%playFunc%']));
+
+	// ANCHOR Register Event
+	document.addEventListener('keydown', ({ key }) => {
+		const keybind = keymap.get(key);
+		if (isDebug)
+			console.log('[Keybind Debug] Key Pressed:', key, '- Keybind:', keybind);
+		if (keybind == 'KeybindDoesNotExist') return;
+		keybind.callback();
+	});
+})();
+// !SECTION
+
+// ANCHOR Ready
 if (
 	isDebug &&
 	typeof performance !== 'undefined' &&

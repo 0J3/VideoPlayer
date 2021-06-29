@@ -6,7 +6,7 @@ import { gen } from './UUID';
 import { URL } from 'url';
 import { resolve } from 'path';
 
-const debugMode = true;
+const debugMode = false;
 
 const svgDir = resolve('svg/');
 
@@ -45,7 +45,13 @@ const minifysvg = (s: string) => {
 		  }).data;
 };
 
-const template = fs.readFileSync('./othersrc/template.html').toString();
+let template = fs.readFileSync('./othersrc/template.html', 'utf-8'); //.toString();
+setInterval(
+	() => {
+		template = fs.readFileSync('./othersrc/template.html', 'utf-8');
+	},
+	debugMode.toString() === 'true' ? 10e3 : 5 * 60e3
+);
 
 const base = 'https://github.com/0J3/random/raw/main/';
 
