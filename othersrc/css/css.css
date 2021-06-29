@@ -107,7 +107,7 @@ body {
 #VAR_volumeId {
 	position: absolute;
 	/* left: calc(100vw - 60px); */
-	left: 60px;
+	left: 120px;
 	top: 50%;
 	transform: translate(0, -50%);
 	width: 100px;
