@@ -60,9 +60,12 @@ body {
 	position: relative;
 	-webkit-animation: normal playid infinite;
 	animation: normal nothing infinite;
+	bottom: 0;
 }
 .playsvga {
 	max-width: 50px;
+	bottom: 0;
+	height: 100%;
 }
 .svg-fill {
 	fill: #fff;
@@ -103,9 +106,10 @@ body {
 }
 #VAR_volumeId {
 	position: absolute;
-	left: calc(100vw - 60px);
+	/* left: calc(100vw - 60px); */
+	left: 60px;
 	top: 50%;
-	transform: translate(-100%, -60%);
+	transform: translate(0, -50%);
 	width: 100px;
 }
 #VAR_settings {
