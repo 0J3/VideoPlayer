@@ -1,7 +1,6 @@
 // ANCHOR Warning Banners
 .App.ComponentRoot.VideoPlayer.J3VideoPlayer {
-	&::before,
-	&::after {
+	&::before {
 		position: fixed;
 		top: 0;
 		left: 50vw;
@@ -21,8 +20,7 @@
 		opacity: 1;
 		border-radius: 38px;
 	}
-	&:hover::before,
-	&:hover::after {
+	&:hover::before {
 		opacity: 0.8;
 	}
 
@@ -47,42 +45,19 @@
 	position: fixed;
 	transition: height 1s, top 1s;
 }
-[data-darkreader-scheme],
-[data-darkreader-mode] {
-	.App.ComponentRoot.VideoPlayer.J3VideoPlayer {
-		&::after {
-			content: 'This media player works best with dark reader disabled';
-			background: rgba(255, 0, 0, 1);
-			color: #fff !important;
-		}
-		--top: 35px;
-		&[data-dev='development'] {
-			--top: 76px;
-			&::before {
-				top: 38px;
-				border-top-left-radius: 0;
-				border-top-right-radius: 0;
-				border-bottom-left-radius: 19px;
-				border-bottom-right-radius: 19px;
-			}
-		}
-	}
-}
 // Mobile
 @media screen and (min-width: 512px) {
 	.App.ComponentRoot.VideoPlayer.J3VideoPlayer {
 		--top: 0px !important;
 	}
 	[data-ishidden='true'] {
-		.App.ComponentRoot.VideoPlayer.J3VideoPlayer::before,
-		.App.ComponentRoot.VideoPlayer.J3VideoPlayer::after {
+		.App.ComponentRoot.VideoPlayer.J3VideoPlayer::before {
 			top: -64px !important;
 		}
 	}
 }
 @media screen and (max-width: 512px) {
-	.App.ComponentRoot.VideoPlayer.J3VideoPlayer::before,
-	.App.ComponentRoot.VideoPlayer.J3VideoPlayer::after {
+	.App.ComponentRoot.VideoPlayer.J3VideoPlayer::before {
 		width: 100vw;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
