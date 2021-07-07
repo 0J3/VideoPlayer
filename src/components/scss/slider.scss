@@ -1,0 +1,16 @@
+@use './vars';
+
+input[type='range'].volume {
+	width: 100vw;
+	position: absolute;
+	top: 0px;
+	transform: translate(0, -100%);
+
+	-webkit-appearance: none;
+	height: 5px;
+	background: #303030;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+}

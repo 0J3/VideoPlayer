@@ -1746,8 +1746,8 @@ __metadata:
   linkType: hard
 
 "@prefresh/webpack@npm:^3.2.2":
-  version: 3.3.0
-  resolution: "@prefresh/webpack@npm:3.3.0"
+  version: 3.3.2
+  resolution: "@prefresh/webpack@npm:3.3.2"
   dependencies:
     "@prefresh/core": ^1.3.1
     "@prefresh/utils": ^1.1.0
@@ -1755,7 +1755,7 @@ __metadata:
     "@prefresh/babel-plugin": ^0.4.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: cb189b91f9b58eb00dbc27c8c77a3e41428970c91441f922964e4a609eb6945e1e4004542d2869f31789dbcd1376699a8511edba973bc463ee0da8451fb3dba3
+  checksum: 735cc3c945743580deb4195419034a834a0cc9197fcef2515058cea88bfed30c55ae7c05089c6dad5314e6dd07e8c5bf34937cdce676ae3dd2562f102efe36e7
   languageName: node
   linkType: hard
 
@@ -3965,9 +3965,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001166, caniuse-lite@npm:^1.0.30001219, caniuse-lite@npm:^1.0.30001230":
-  version: 1.0.30001242
-  resolution: "caniuse-lite@npm:1.0.30001242"
-  checksum: 4710e50ca8dfb1edd2e1a07e8a983803d83c6712aba9887573964e3be243aa9dcb121fe7af08ff834666ae6177c14817a6ee44179fccb24ed05a75c89263d964
+  version: 1.0.30001243
+  resolution: "caniuse-lite@npm:1.0.30001243"
+  checksum: 0d6330d2279c9ec2b58cf5154ec80eeea6bca861825a791f037c644e36cf28a19db32a35a66ac989ee026b7d19ffc0eb3ad78fbc8512f7433b0caa1964de4999
   languageName: node
   linkType: hard
 
@@ -8548,9 +8548,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"j3playerv3@workspace:.":
+"j3player@workspace:.":
   version: 0.0.0-use.local
-  resolution: "j3playerv3@workspace:."
+  resolution: "j3player@workspace:."
   dependencies:
     "@types/enzyme": ^3.10.5
     "@types/jest": ^26.0.8
@@ -13153,8 +13153,8 @@ resolve@^2.0.0-next.3:
   linkType: hard
 
 "rollup@npm:^2.43.1":
-  version: 2.52.7
-  resolution: "rollup@npm:2.52.7"
+  version: 2.52.8
+  resolution: "rollup@npm:2.52.8"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -13162,7 +13162,7 @@ resolve@^2.0.0-next.3:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 341065bf751b811b6b88bf99282ef45da277bcd9e035a2e449a960db011b0916b2ea164999f13d435a9c64d016b61d474dfbf7def517b828f99c2eee8f00cf04
+  checksum: bd83d5c89a23bf59b639fa57316e402402606a896a9fd25e16f83d5004b57a36fb21321f5726406741b68a5fcf4768adaa53a8f6cfb9e39c8d11a7e6be2fdd3a
   languageName: node
   linkType: hard
 

@@ -1,7 +1,7 @@
 {
 	"private": true,
-	"name": "j3playerv3",
-	"version": "0.0.0",
+	"name": "j3player",
+	"version": "3.0.0",
 	"license": "MIT",
 	"scripts": {
 		"build": "preact build",

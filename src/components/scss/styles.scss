@@ -1,3 +1,6 @@
+@use './slider';
+@use './vars';
+
 // ANCHOR Warning Banners
 .App.ComponentRoot.VideoPlayer.J3VideoPlayer {
 	&::before {
@@ -20,6 +23,7 @@
 		opacity: 1;
 		border-radius: 38px;
 		z-index: 5;
+		backdrop-filter: blur(20px);
 	}
 	&:hover::before {
 		opacity: 0.8;
@@ -29,11 +33,11 @@
 	&[data-dev='development'] {
 		&::before {
 			[data-darkreader-mode] & {
-				background: rgb(0, 136, 247);
+				background: rgba(0, 136, 247, 0.753);
 				color: #fff;
 			}
 			content: 'This is a DEVELOPMENT BUILD!';
-			background: rgb(255, 255, 0);
+			background: rgba(255, 255, 0, 0.753);
 			color: #000 !important;
 		}
 		&:hover::before {
@@ -98,19 +102,19 @@
 	}
 }
 
-// ANCHOR Variables
-$controlHeight: 32px;
 // SECTION Player
 .playercomponent {
 	// SECTION Controls
 	.controls {
+		// ANCHOR Backdrop Filter (Chromium-based only)
+		backdrop-filter: blur(20px);
 		// ANCHOR Position
 		position: fixed;
 		// ANCHOR Always have it at the bottom
 		bottom: 0;
 		// ANCHOR Except when the cursor is hidden
 		[data-ishidden='true'] & {
-			bottom: -$controlHeight - 3;
+			bottom: -1 * vars.$controlHeight - 10px;
 		}
 		// ANCHOR but always show it when on <512px width
 		@media screen and (max-width: 512px) {
@@ -118,7 +122,7 @@ $controlHeight: 32px;
 		}
 
 		// ANCHOR Height must always be $controlHeight
-		height: $controlHeight;
+		height: vars.$controlHeight;
 
 		// ANCHOR Text Colour
 		color: #fff;

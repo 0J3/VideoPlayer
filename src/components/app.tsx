@@ -4,8 +4,10 @@ import Player from './player';
 
 import p from '../../package.json';
 
-import s from './styles.scss';
-import styleFuncGetter from './styleFunc';
+import s from './scss/styles.scss';
+import styleFuncGetter from './lib/styleFunc';
+import { InitializeKeybinds } from './lib/KeyBindings';
+import { Toast } from './lib/PreactToast';
 const c = styleFuncGetter(s);
 
 const g = (s: string) => {
@@ -20,6 +22,14 @@ const g = (s: string) => {
 };
 
 const App: FunctionalComponent = () => {
+	if (typeof document !== 'undefined') {
+		document.documentElement.setAttribute(
+			'data-isiframe',
+			self === top ? 'false' : 'true'
+		);
+
+		InitializeKeybinds();
+	}
 	return (
 		<div
 			id="preact_root"
@@ -37,6 +47,7 @@ const App: FunctionalComponent = () => {
 				/>
 				<Player default />
 			</Router>
+			<Toast id="Toast" />
 		</div>
 	);
 };
