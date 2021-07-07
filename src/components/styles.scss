@@ -69,5 +69,40 @@
 	}
 }
 
-// ANCHOR Controls
+// ANCHOR Variables
 $controlHeight: 32px;
+// SECTION Player
+.playercomponent {
+	// SECTION Controls
+	.controls {
+		// ANCHOR Position
+		position: fixed;
+		// ANCHOR Always have it at the bottom
+		bottom: 0;
+		// ANCHOR Except when the cursor is hidden
+		[data-ishidden='true'] & {
+			bottom: -$controlHeight - 3;
+		}
+		// ANCHOR but always show it when on <512px width
+		@media screen and (max-width: 512px) {
+			bottom: 0 !important;
+		}
+
+		// ANCHOR Height must always be $controlHeight
+		height: $controlHeight;
+
+		// ANCHOR Text Colour
+		color: #fff;
+
+		// ANCHOR Background Colour
+		background-color: rgba(0, 0, 0, 0.479);
+
+		// ANCHOR Width must be the entire f*cking screen
+		width: 100vw;
+
+		// ANCHOR Transition EVERYTHING
+		transition: all 1s;
+	}
+	// !SECTION
+}
+// !SECTION

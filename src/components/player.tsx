@@ -22,7 +22,11 @@ export class Player extends Component<{
 	Path: string;
 }> {
 	render() {
-		return <div></div>;
+		return (
+			<div id="player" class={c('playercomponent')}>
+				<Controls Funcs={{}} />
+			</div>
+		);
 	}
 }
 
