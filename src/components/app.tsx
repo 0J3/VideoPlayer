@@ -31,24 +31,26 @@ const App: FunctionalComponent = () => {
 		InitializeKeybinds();
 	}
 	return (
-		<div
-			id="preact_root"
-			class={c('ComponentRoot App VideoPlayer J3VideoPlayer')}
-			data-Version={p.version}
-			data-Version-Major={p.version.split('.')[0]}
-			data-Version-Minor={p.version.split('.')[1]}
-			data-Version-Patch={p.version.split('.')[2]}
-			data-dev={process.env.NODE_ENV || 'development'}
-		>
-			<Router>
-				<Route
-					path="/source"
-					component={g('https://github.com/0j3/VideoPlayer')}
-				/>
-				<Player default />
-			</Router>
+		<>
+			<div
+				id="preact_root"
+				class={c('ComponentRoot App VideoPlayer J3VideoPlayer')}
+				data-Version={p.version}
+				data-Version-Major={p.version.split('.')[0]}
+				data-Version-Minor={p.version.split('.')[1]}
+				data-Version-Patch={p.version.split('.')[2]}
+				data-dev={process.env.NODE_ENV || 'development'}
+			>
+				<Router>
+					<Route
+						path="/source"
+						component={g('https://github.com/0j3/VideoPlayer')}
+					/>
+					<Player default />
+				</Router>
+			</div>
 			<Toast id="Toast" />
-		</div>
+		</>
 	);
 };
 
