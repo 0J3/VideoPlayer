@@ -53,7 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["preact-render-to-string", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:5.1.19"],
             ["preact-router", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:3.2.1"],
             ["sass", "npm:1.35.1"],
-            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:12.1.0"],
+            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:10.2.0"],
             ["sirv-cli", "npm:1.0.12"],
             ["typescript", "patch:typescript@npm%3A3.9.10#builtin<compat/typescript>::version=3.9.10&hash=ddfc1b"]
           ],
@@ -11043,7 +11043,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["preact-render-to-string", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:5.1.19"],
             ["preact-router", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:3.2.1"],
             ["sass", "npm:1.35.1"],
-            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:12.1.0"],
+            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:10.2.0"],
             ["sirv-cli", "npm:1.0.12"],
             ["typescript", "patch:typescript@npm%3A3.9.10#builtin<compat/typescript>::version=3.9.10&hash=ddfc1b"]
           ],
@@ -15297,7 +15297,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.10.0"],
             ["rimraf", "npm:3.0.2"],
             ["sade", "npm:1.7.4"],
-            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:12.1.0"],
+            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:10.2.0"],
             ["size-plugin", "virtual:201b96400770755f142d60d96f3cbc6838710e486f2a8b5b0f8dbb61919dd3aaf60f519732f5a18dee6c9582375b2b9c8c8c9c1ce954706c5ccf51c063e25fad#npm:3.0.0"],
             ["source-map", "npm:0.7.3"],
             ["stack-trace", "npm:0.0.10"],
@@ -16688,26 +16688,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["sass-loader", [
-        ["npm:12.1.0", {
-          "packageLocation": "./.yarn/cache/sass-loader-npm-12.1.0-6188089e12-75f523e64c.zip/node_modules/sass-loader/",
+        ["npm:10.2.0", {
+          "packageLocation": "./.yarn/cache/sass-loader-npm-10.2.0-91ed64638b-1c89149207.zip/node_modules/sass-loader/",
           "packageDependencies": [
-            ["sass-loader", "npm:12.1.0"]
+            ["sass-loader", "npm:10.2.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:12.1.0", {
-          "packageLocation": "./.yarn/$$virtual/sass-loader-virtual-65cf8ba71e/0/cache/sass-loader-npm-12.1.0-6188089e12-75f523e64c.zip/node_modules/sass-loader/",
+        ["virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:10.2.0", {
+          "packageLocation": "./.yarn/$$virtual/sass-loader-virtual-d8d4f1328b/0/cache/sass-loader-npm-10.2.0-91ed64638b-1c89149207.zip/node_modules/sass-loader/",
           "packageDependencies": [
-            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:12.1.0"],
+            ["sass-loader", "virtual:a067ea3173a990b425a5ef441b14ba8afd87d03da76519045b765ba560f7abf21e132e728a14343268e602022f35bc7eb367e64740bc15884e5c9c6b0f024a97#npm:10.2.0"],
             ["@types/fibers", null],
             ["@types/node-sass", null],
             ["@types/sass", null],
             ["@types/webpack", null],
             ["fibers", null],
             ["klona", "npm:2.0.4"],
+            ["loader-utils", "npm:2.0.0"],
             ["neo-async", "npm:2.6.2"],
             ["node-sass", null],
             ["sass", "npm:1.35.1"],
+            ["schema-utils", "npm:3.1.0"],
+            ["semver", "npm:7.3.5"],
             ["webpack", null]
           ],
           "packagePeers": [

@@ -4,15 +4,9 @@ import get from './getUrl';
 import Cursor from './CursorManager';
 Cursor.registerListeners();
 
-import styles from './styles.scss';
-const c = (a: string) => {
-	let b = a.split(' ').map((b: string) => {
-		return `c_${b} ${'ClassNotFoundInStylesheet'}`;
-	});
-	console.log(b);
-
-	return b;
-};
+import s from './styles.scss';
+import styleFuncGetter from './styleFunc';
+const c = styleFuncGetter(s);
 
 interface Funcs {}
 
@@ -20,7 +14,7 @@ class Controls extends Component<{
 	Funcs: Funcs;
 }> {
 	render() {
-		return <div id="controls" class="controls"></div>;
+		return <div id="controls" class={c('controls')}></div>;
 	}
 }
 
