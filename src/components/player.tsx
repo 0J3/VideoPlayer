@@ -31,6 +31,13 @@ class Controls extends Component<{
 	Video: RefObject<any>;
 }> {
 	progress = createRef();
+	componentWillMount() {
+		setInterval(() => {
+			this.progress.current.value =
+				this.props.Video.current.currentTime /
+				this.props.Video.current.duration;
+		}, 10);
+	}
 	render() {
 		return (
 			<div id="controls" class={c('controls')}>
