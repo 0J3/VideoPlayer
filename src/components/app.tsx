@@ -1,3 +1,6 @@
+import getConsole from './lib/logger';
+const console = getConsole('App');
+
 import { FunctionalComponent, h } from 'preact';
 import { Route, Router } from 'preact-router';
 import Player from './player';
@@ -42,6 +45,12 @@ const App: FunctionalComponent = () => {
 				data-dev={process.env.NODE_ENV || 'development'}
 			>
 				<Router>
+					<Route
+						path="/logger"
+						component={g(
+							'https://github.com/0J3/VideoPlayer/blob/v3/src/components/lib/logger.ts'
+						)}
+					/>
 					<Route
 						path="/source"
 						component={g('https://github.com/0j3/VideoPlayer')}

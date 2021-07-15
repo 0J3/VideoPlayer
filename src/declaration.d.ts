@@ -6,3 +6,8 @@ declare module '*.scss' {
 	const mapping: Record<string, string>;
 	export default mapping;
 }
+
+declare module '*.txt' {
+	const mapping: Record<string, string>;
+	export default mapping;
+}

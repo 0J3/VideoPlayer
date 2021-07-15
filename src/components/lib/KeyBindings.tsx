@@ -1,3 +1,7 @@
+import getConsole from './logger';
+const console = getConsole('KeybindManager');
+console.debug('Init', 'Loading KeybindManager');
+
 // CLASS Internal Keybind
 export class _Keybind {
 	key: string;

@@ -1,3 +1,7 @@
+import getConsole from './lib/logger';
+const console = getConsole('Player');
+console.debug('Init', 'Loading Player');
+
 import { Component, h, createRef, RefObject } from 'preact';
 import get from './lib/getUrl';
 
@@ -13,6 +17,7 @@ const c = styleFuncGetter(s);
 
 interface Funcs {}
 
+const refVolSlider = createRef();
 const VolSlider = (
 	<input
 		type="range"
@@ -22,9 +27,11 @@ const VolSlider = (
 		step="0.001"
 		class={c('slider volume')}
 		id="volume"
+		ref={refVolSlider}
 	/>
 );
 
+console.groupCollapsed('Init', 'Initialize Classes');
 // SECTION Controls
 class Controls extends Component<{
 	Funcs: Funcs;
@@ -33,9 +40,10 @@ class Controls extends Component<{
 	progress = createRef();
 	componentWillMount() {
 		setInterval(() => {
-			this.progress.current.value =
-				this.props.Video.current.currentTime /
-				this.props.Video.current.duration;
+			if (this.props.Video.current)
+				this.progress.current.value =
+					this.props.Video.current.currentTime /
+					this.props.Video.current.duration;
 		}, 10);
 	}
 	render() {
@@ -48,20 +56,26 @@ class Controls extends Component<{
 					max="1"
 					value="0"
 					step="0.001"
-					class={c('slider volume')}
+					class={c('slider progress')}
 					id="progress"
 					onInput={() => {
-						const v = this.progress.current.value;
-						this.props.Video.current.currentTime =
-							v * this.props.Video.current.duration;
+						try {
+							const v = this.progress.current.value;
+							this.props.Video.current.currentTime =
+								v * this.props.Video.current.duration;
+						} catch (error) {
+							console.error(error);
+						}
 					}}
 					ref={this.progress}
 				/>
+				{VolSlider}
 			</div>
 		);
 	}
 }
 // !SECTION
+console.log('Created Component Class');
 
 // SECTION Player
 export class Player extends Component<{
@@ -85,11 +99,20 @@ export class Player extends Component<{
 				: null;
 			x.setAttribute('data-isPlaying', 'false');
 		} else {
-			x.play();
-			typeof document !== 'undefined'
-				? document.body.setAttribute('data-isPlaying', 'true')
-				: null;
-			x.setAttribute('data-isPlaying', 'true');
+			x.play()
+				.then(() => {
+					typeof document !== 'undefined'
+						? document.body.setAttribute('data-isPlaying', 'true')
+						: null;
+					x.setAttribute('data-isPlaying', 'true');
+				})
+				.catch((error: any) => {
+					console.warn(
+						'TogglePlayback',
+						'An error has occurred while toggling playback. Error:\n',
+						error
+					);
+				});
 		}
 		this.props.isPlaying = !x.paused;
 	}
@@ -98,7 +121,6 @@ export class Player extends Component<{
 		try {
 			setTimeout(() => this.togglePlayback(), 1);
 		} catch (error) {}
-		this.ref.current.addEventListener('click', () => this.togglePlayback());
 		if (typeof document !== 'undefined')
 			setInterval(() => {
 				// ANCHOR Play/Pause
@@ -185,13 +207,32 @@ export class Player extends Component<{
 			}
 		}
 	}
+	// ANCHOR updateVolume
+	updateVolume(x: number) {
+		try {
+			if (this.ref.current) this.ref.current.volume = x;
+			else setTimeout(() => this.updateVolume(x), 100);
+		} catch (error) {
+			console.error('VolumeUpdateError:', error);
+		}
+	}
+	// ANCHOR initVolMgr
+	initVolMgr() {
+		if (this.ref.current) {
+			const trim = (s: string) => {
+				return s;
+			};
+			this.volmgr = VolMgrGetter(
+				trim(this.props.Path),
+				refVolSlider,
+				(x: number) => this.updateVolume(x)
+			);
+			this.volmgr.updateVolFromStorage();
+		} else setTimeout(() => this.initVolMgr(), 100);
+	}
 	// ANCHOR Render
 	render() {
-		const trim = (s: string) => {
-			return s;
-		};
-
-		this.volmgr = VolMgrGetter(trim(this.props.Path), VolSlider, () => {});
+		this.initVolMgr();
 		return (
 			<div id="player" class={c('playercomponent')}>
 				<video
@@ -205,11 +246,13 @@ export class Player extends Component<{
 					<source src={this.props.Path + '.mp4'} />
 					<source src={this.props.Path + '.webm'} />
 				</video>
+				<div class={c('executeClick')} onClick={() => this.togglePlayback()} />
 				<Controls Funcs={{}} Video={this.ref} />
 			</div>
 		);
 	}
 }
+console.log('Created Player Class');
 // !SECTION
 
 export default class PlayerWrapper extends Component {
@@ -224,3 +267,6 @@ export default class PlayerWrapper extends Component {
 		return <Player Path={url} />;
 	}
 }
+console.log('Created PlayerWrapper Class');
+console.groupEnd();
+console.debug('Init', 'Loaded Player');

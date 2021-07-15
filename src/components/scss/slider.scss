@@ -1,13 +1,8 @@
 @use './vars';
 
-input[type='range'].volume {
-	width: 100vw;
-	position: absolute;
-	top: -10px;
-	left: 0;
-	transform: translate(0, -100%);
+input[type='range'],
+.slider {
 	margin: 0 0;
-
 	-webkit-appearance: none;
 	height: 5px;
 	background: #303030;
@@ -15,20 +10,80 @@ input[type='range'].volume {
 	opacity: 1;
 	-webkit-transition: 0.2s;
 	transition: opacity 0.2s;
-	
-	&::-webkit-slider-thumb {
-		-webkit-appearance: none;
-		appearance: none;
-		width: 25px;
-		height: 25px;
-		background: #004daa;
-		cursor: pointer;
+
+	// ANCHOR Progress&Volume
+	&.progress,
+	&.volume {
+		position: absolute;
+
+		// ANCHOR color things
+		$c: #aa0000; //#7a00aa
+
+		@mixin rangethumb() {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 20px;
+			height: 20px;
+			background: $c;
+			cursor: pointer;
+			border: none;
+			border-radius: 100%;
+		}
+		@mixin rangeprogress() {
+			background: $c;
+			border: none;
+			margin: 0 0;
+			height: 100%;
+		}
+
+		// ANCHOR Mixin things
+		&::-moz-range-thumb {
+			@include rangethumb();
+		}
+		&::-range-thumb {
+			@include rangethumb();
+		}
+		&::range-thumb {
+			@include rangethumb();
+		}
+		&::-webkit-slider-thumb {
+			@include rangethumb();
+		}
+		&::-ms-thumb {
+			@include rangethumb();
+		}
+		// &::-webkit-slider-runnable-track,
+		// &::-moz-range-track,
+		// &::-ms-track,
+		// &::-track,
+		// &::-range-track,
+		// &::-slider-thumb,
+		// &::range-track,
+		// &:track,
+		// &:slider-thumb {
+		// }
+		&::-moz-range-progress {
+			@include rangeprogress();
+		}
+		&::-ms-fill-lower {
+			@include rangeprogress();
+		}
 	}
 
-	&::-moz-range-thumb {
-		width: 25px;
-		height: 25px;
-		background: #004daa;
-		cursor: pointer;
+	// ANCHOR Progress
+	&.progress {
+		width: 100vw;
+		top: 0;
+		left: 0;
+		transform: translate(0, -100%);
+	}
+
+	// ANCHOR Volume
+	&.volume {
+		width: 10vw;
+		min-width: 128px;
+		top: 50%;
+		right: 10px;
+		transform: translate(0, -100%);
 	}
 }

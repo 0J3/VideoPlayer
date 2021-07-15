@@ -1,6 +1,26 @@
 @use './slider';
 @use './vars';
 
+// ANCHOR Mouse Events
+.ComponentRoot,
+.App,
+video,
+.video {
+	pointer-events: none;
+}
+.controls,
+#preact_root {
+	pointer-events: initial;
+}
+.executeClick {
+	pointer-events: initial;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: calc(100vw - #{vars.$controlHeight});
+	width: 100vw;
+}
+
 // ANCHOR Warning Banners
 .App.ComponentRoot.VideoPlayer.J3VideoPlayer {
 	&::before {
@@ -79,7 +99,8 @@
 	transition: height 1s, top 1s;
 }
 // Mobile
-@media screen and (min-width: 512px) {
+$breakingPoint: 674px;
+@media screen and (min-width: $breakingPoint) {
 	.App.ComponentRoot.VideoPlayer.J3VideoPlayer {
 		--top: 0px !important;
 	}
@@ -89,7 +110,7 @@
 		}
 	}
 }
-@media screen and (max-width: 512px) {
+@media screen and (max-width: $breakingPoint) {
 	.App.ComponentRoot.VideoPlayer.J3VideoPlayer::before {
 		width: 100vw;
 		border-top-left-radius: 0;
@@ -99,6 +120,9 @@
 	}
 	.App.ComponentRoot.VideoPlayer.J3VideoPlayer {
 		--top: 38px;
+	}
+	.playercomponent .controls {
+		bottom: 0 !important;
 	}
 }
 
@@ -114,12 +138,10 @@
 		bottom: 0;
 		// ANCHOR Except when the cursor is hidden
 		[data-ishidden='true'] & {
-			bottom: -1 * vars.$controlHeight - 10px;
+			bottom: -1 * vars.$controlHeight;
 		}
-		// ANCHOR but always show it when on <512px width
-		@media screen and (max-width: 512px) {
-			bottom: 0 !important;
-		}
+		// ANCHOR but always show it when on <$breakingPoint width
+		// MOVED TO: See last section
 
 		// ANCHOR Height must always be $controlHeight
 		height: vars.$controlHeight;
@@ -135,10 +157,6 @@
 
 		// ANCHOR Transition EVERYTHING
 		transition: all 1s;
-
-		// SECTION Progress
-
-		// !SECTION
 	}
 	// !SECTION
 

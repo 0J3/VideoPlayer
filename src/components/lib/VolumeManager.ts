@@ -1,13 +1,35 @@
-export default (
+import getConsole from './logger';
+const console = getConsole('VolumeManager');
+console.debug('Init', 'Loading VolumeManager');
+
+import { RefObject } from 'preact';
+
+export const Module = (
 	url: string,
-	volItem: any,
+	volItemRef: RefObject<any>,
 	volUpdate: (volume: number) => any
 ) => {
+	const volItem = volItemRef.current;
 	const maxVol = 2;
-	const lsVol =
-		localStorage.getItem('Volume-' + url) || localStorage.getItem('Volume');
-	let vol: number = Number(typeof lsVol === 'undefined' ? 1 : lsVol);
+	let vol: number = 1;
+
+	const checkVol = () => {
+		if (!isFinite(vol / maxVol)) {
+			console.warn(
+				`Volume is not finite (${vol}/${maxVol}) - Setting vol to ${maxVol}`
+			);
+			vol = maxVol;
+		}
+	};
+
+	const updateVolFromStorage = () => {
+		const lsVol =
+			localStorage.getItem('Volume-' + url) || localStorage.getItem('Volume');
+		vol = Number(typeof lsVol === 'undefined' ? 1 : lsVol);
+	};
+
 	const setPlayerVol = () => {
+		checkVol();
 		volUpdate(vol / maxVol);
 	};
 	const setVolume = (volume: number) => {
@@ -33,6 +55,8 @@ export default (
 	setPlayerVol();
 
 	const getVolume = () => vol / maxVol;
+
+	volItem.addEventListener('input', () => updateVolume());
 	return {
 		setVolume,
 		getVolume,
@@ -44,5 +68,9 @@ export default (
 		},
 		changeVolume,
 		updateVolume,
+		updateVolFromStorage,
 	};
 };
+export default Module;
+
+console.info('Init', 'Loaded VolumeManager');

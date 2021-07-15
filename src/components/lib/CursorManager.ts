@@ -1,4 +1,6 @@
-console.log('Loading CursorManager');
+import getConsole from './logger';
+const console = getConsole('CursorManager');
+console.debug('Init', 'Loading CursorManager');
 
 export class CursorMan {
 	timeout: number = 5000;
@@ -26,7 +28,7 @@ export class CursorMan {
 			this.isHidden = false;
 			this.ShowCursor();
 			document.body.setAttribute('data-isHidden', 'false');
-			console.log('Showing Cursor');
+			console.debug('Cursor', 'Showing Cursor');
 		}
 	}
 	InternalHideCursor() {
@@ -34,7 +36,7 @@ export class CursorMan {
 			this.isHidden = true;
 			this.HideCursor();
 			document.body.setAttribute('data-isHidden', 'true');
-			console.log('Hiding Cursor');
+			console.debug('Cursor', 'Hiding Cursor');
 		}
 	}
 	Move() {
@@ -43,7 +45,7 @@ export class CursorMan {
 
 	registerListeners() {
 		if (typeof document !== 'undefined') {
-			console.log('Registering Event Listeners');
+			console.info('Init.registerEvents', 'Registering Event Listeners');
 
 			document.body.addEventListener('keydown', () => this.Move());
 			document.body.addEventListener('keyup', () => this.Move());
@@ -54,3 +56,5 @@ export class CursorMan {
 export const cursorMan = new CursorMan(100);
 // cursorMan.registerListeners();
 export default cursorMan;
+
+console.debug('Init', 'Loaded CursorManager');
