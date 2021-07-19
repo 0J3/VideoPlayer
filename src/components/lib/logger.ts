@@ -50,7 +50,7 @@ if (typeof window === 'undefined') {
 
 	const getDebugFunc = (logType: string, logFunc: string) => {
 		const debug = (_region: string, ...args: any[]) => {
-			// yoinked from goosemod but made better
+			// significantly altered goosemod logger
 			const regionSplit = _region.split('.');
 			const lt = regionSplit.shift();
 			const regions = [
