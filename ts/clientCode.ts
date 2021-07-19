@@ -132,9 +132,11 @@ const initControls = () => {
 			);
 	};
 	let interval;
-	const play = () => {
-		document['%playerVar%'].play();
-		interval = setInterval(document['updateBar'], 20);
+	const play = async () => {
+		try {
+			await document['%playerVar%'].play();
+			interval = setInterval(document['updateBar'], 20);
+		} catch (error) {}
 	};
 	const pause = () => {
 		document['%playerVar%'].pause();
@@ -148,8 +150,11 @@ const initControls = () => {
 	document['play'] = play;
 	document['pause'] = pause;
 
-	play();
-	updateSvg();
+	setImmediate(() => {
+		play().catch(() => {});
+		updateSvg();
+	});
+	console.log('baka');
 };
 
 initHover(2.5e3);
