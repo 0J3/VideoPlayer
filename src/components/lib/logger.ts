@@ -1,8 +1,7 @@
 import defaultLog from './defaultLog.txt';
 // const defaultLog = 'https://goosemod.com/img/logo.jpg';
-let defaultExport;
 
-export let getLogger: (logType: string) => any;
+export let getLogger: (logType: string) => any = () => {};
 
 if (typeof window === 'undefined') {
 	console.log('UwU we cant run if window === undefined');
