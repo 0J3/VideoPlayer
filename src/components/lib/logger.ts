@@ -1,7 +1,22 @@
 import defaultLog from './defaultLog.txt';
 // const defaultLog = 'https://goosemod.com/img/logo.jpg';
 
-export let getLogger: (logType: string) => any = () => {};
+export let getLogger: (logType: string) => any = () => {
+	return {
+		toString: () => {
+			// for that one person who logs the console element
+			return 'CustomConsole - See https://plrv3.nora.lgbt/source';
+		},
+		debug: () => null,
+		log: () => null,
+		info: () => null,
+		warn: () => null,
+		error: () => null,
+		group: () => null,
+		groupCollapsed: () => null,
+		groupEnd: () => null,
+	};
+};
 
 if (typeof window === 'undefined') {
 	console.log('UwU we cant run if window === undefined');
