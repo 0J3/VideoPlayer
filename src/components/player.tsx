@@ -219,16 +219,27 @@ export class Player extends Component<{
 	// ANCHOR initVolMgr
 	initVolMgr() {
 		if (this.ref.current) {
-			const trim = (s: string) => {
-				return s;
-			};
+			// if there is a video player
+
+			// init the volume manager
 			this.volmgr = VolMgrGetter(
-				trim(this.props.Path),
+				this.ref.current.currentSrc ?? this.props.Path,
 				refVolSlider,
 				(x: number) => this.updateVolume(x)
 			);
+
+			// onload, set the URL
+			this.ref.current.addEventListener(
+				'loadeddata',
+				() => {
+					console.log('loaded');
+					this.volmgr.setURL(this.ref.current.currentSrc);
+				},
+				false
+			);
 			this.volmgr.updateVolFromStorage();
-		} else setTimeout(() => this.initVolMgr(), 100);
+		} // otherwise, repeat in 100ms
+		else setTimeout(() => this.initVolMgr(), 100);
 	}
 	// ANCHOR Render
 	render() {

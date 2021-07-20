@@ -1,5 +1,5 @@
-const base = 'https://github.com/0J3/random/raw/main/';
-export default (path: string = `${base}hri.mp4`) => {
+const base = 'https://github.com/0J3/random/raw/main';
+export default (path: string = `${base}/hri.mp4`) => {
 	// if (path == '' || !path) {
 	// 	path = document.location.hash.replace('#', '');
 	// }
@@ -11,7 +11,7 @@ export default (path: string = `${base}hri.mp4`) => {
 	}
 
 	if (path === '' || !path || path === '/') {
-		path = `${base}hri.mp4`;
+		path = `${base}/hri.mp4`;
 	}
 
 	if (!path.startsWith('https')) {

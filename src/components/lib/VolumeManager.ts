@@ -69,6 +69,14 @@ export const Module = (
 		changeVolume,
 		updateVolume,
 		updateVolFromStorage,
+		setURL: (a?: string) => {
+			if (a && a !== url) {
+				url = a;
+				updateVolFromStorage();
+				volItem['value'] = vol;
+				volUpdate(vol);
+			}
+		},
 	};
 };
 export default Module;
