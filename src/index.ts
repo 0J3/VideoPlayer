@@ -1,3 +1,6 @@
+import v from './polyfills';
+v();
+
 import './style/index.scss';
 import App from './components/app';
 
