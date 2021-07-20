@@ -46,17 +46,21 @@ export const Module = (
 
 		setVolume(target);
 		volItem['value'] = vol;
+		volItem['max'] = maxVol;
 	};
 	const updateVolume = () => {
 		const val = volItem['value'];
 		setVolume(val);
 	};
 	volItem['value'] = vol;
+	volItem['max'] = maxVol;
 	setPlayerVol();
 
 	const getVolume = () => vol / maxVol;
-
 	volItem.addEventListener('input', () => updateVolume());
+
+	setVolume(vol);
+
 	return {
 		setVolume,
 		getVolume,
@@ -74,6 +78,7 @@ export const Module = (
 				url = a;
 				updateVolFromStorage();
 				volItem['value'] = vol;
+				volItem['max'] = maxVol;
 				volUpdate(vol);
 			}
 		},
