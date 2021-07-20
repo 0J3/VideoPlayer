@@ -45,7 +45,7 @@ export const InitializeKeybinds = () => {
 		const { key } = e;
 		const keybind = keymap.get(key);
 		if (process.env.NODE_ENV === 'development')
-			console.log('[Keybind Debug] Key Pressed:', key, '- Keybind:', keybind);
+			console.log('Keybind.keyPressed:', key, '- Keybind:', keybind);
 		if (keybind == 'KeybindDoesNotExist') return;
 		e.preventDefault();
 		keybind.callback();
