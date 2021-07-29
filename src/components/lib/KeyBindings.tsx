@@ -11,6 +11,7 @@ export class _Keybind {
 		this.callback = callback;
 	}
 }
+// !CLASS
 
 // CLASS Keymap
 export class Keymap {
@@ -36,6 +37,7 @@ export class Keymap {
 		return 'KeybindDoesNotExist';
 	}
 }
+// !CLASS
 
 export const keymap = new Keymap();
 
@@ -59,3 +61,4 @@ export default class Keybind extends _Keybind {
 		keymap.set(this);
 	}
 }
+// !CLASS
